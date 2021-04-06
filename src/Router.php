@@ -43,7 +43,7 @@ class Router{
      */
     public function dispatch($router_type = null)
     {
-        $router_type = ($router_type == null) ? $_SERVER["PATH_INFO"] : $router_type;
+        $router_type = ($router_type == null) ? ((isset($_SERVER["PATH_INFO"]) ? $_SERVER["PATH_INFO"] : "/")) : $router_type;
 
         if(isset($this->router[$router_type])){
             if($_SERVER["REQUEST_METHOD"] == $this->router[$router_type]["method"]){
@@ -64,7 +64,7 @@ class Router{
                         $class->$action();
                     }else{
                         if(!class_exists($this->router[$router_type]["middleware"])){
-                            throw new \Exception("Error middleware:{$this->router[$router_type]["middleware"]}:handle not found");
+                            throw new \Exception("Error middleware:{$this->router[$router_type]["middleware"]} not found");
                         }
 
                         $middleware_class = new $this->router[$router_type]["middleware"];

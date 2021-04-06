@@ -11,10 +11,12 @@
 namespace app\http;
 
 
-class Hello
+use app\Application;
+
+class Hello extends Application
 {
     public function index()
     {
-        echo "HelloWorld2";
+        $this->negative("OK",["user" => "2333"]);
     }
 }

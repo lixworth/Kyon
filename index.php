@@ -9,13 +9,11 @@
  */
 
 use kyon\Router;
+use kyon\RunTime;
 
-echo "<pre>";
 //print_r($_SERVER);
-include "src/Router.php";
-include "app/http/Hello.php";
-include "app/middleware/TestMiddleware.php";
-
+require_once "vendor/autoload.php";
+Runtime::start();
 $router = new Router();
 $router->get("/",function (){
     echo "HelloWorld";

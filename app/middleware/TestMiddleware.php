@@ -11,11 +11,13 @@
 namespace app\middleware;
 
 
-class TestMiddleware
+use kyon\Middleware;
+
+class TestMiddleware extends Middleware
 {
     public function handle()
     {
-        return false;
+        return true;
     }
 
     public function return()
