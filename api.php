@@ -14,11 +14,12 @@ echo "<pre>";
 //print_r($_SERVER);
 include "src/Router.php";
 include "app/http/Hello.php";
+include "app/middleware/TestMiddleware.php";
 
 $router = new Router();
 $router->get("/",function (){
     echo "HelloWorld";
 });
 
-$router->get('/hello',"App\Http\Hello@index");
+$router->get('/hello',"app\http\Hello@index","app\middleware\TestMiddleware");
 $router->dispatch();

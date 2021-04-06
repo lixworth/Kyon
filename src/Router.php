@@ -60,7 +60,27 @@ class Router{
                     if(!method_exists($class,$action)){
                         throw new \Exception("Error function:{$router[0]}:{$action} not found");
                     }
-                    $class->$action();
+                    if($this->router[$router_type]["middleware"] == null){
+                        $class->$action();
+                    }else{
+                        if(!class_exists($this->router[$router_type]["middleware"])){
+                            throw new \Exception("Error middleware:{$this->router[$router_type]["middleware"]}:handle not found");
+                        }
+
+                        $middleware_class = new $this->router[$router_type]["middleware"];
+                        if(!method_exists($middleware_class,"handle")){
+                            throw new \Exception("Error middleware:{$this->router[$router_type]["middleware"]}:handle not found");
+
+                        }
+                        if($middleware_class->handle()){
+                            $class->$action();
+                        }else{
+                            if(!method_exists($middleware_class,"return")){
+                                throw new \Exception("Error middleware:{$this->router[$router_type]["middleware"]}:return not found");
+                            }
+                            $middleware_class->return();
+                        }
+                    }
                 }
             }else{
                 throw new \Exception("Error 405");

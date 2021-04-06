@@ -8,7 +8,7 @@
  * @create 2021/4/6 9:49
  */
 
-namespace App\Http;
+namespace app\http;
 
 
 class Hello
