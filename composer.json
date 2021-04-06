@@ -1,0 +1,12 @@
+{
+    "name": "lixworth/kyon",
+    "description": "Simple API framwork for php",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "lixworth",
+            "email": "lixworth@gmail.com"
+        }
+    ],
+    "require": {}
+}
