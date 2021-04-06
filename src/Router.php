@@ -26,8 +26,17 @@ class Router{
             ];
         }
     }
+    public function any($url,$target,$middleware = null){
+        if(!isset($this->router[$url])){
+            $this->router[$url] = [
+                "method" => "ANY",
+                "target" => $target,
+                "middleware" => $middleware
+            ];
+        }
+    }
 
-    public function post($url,$target,$middleware){
+    public function post($url,$target,$middleware = null){
         if(!isset($this->router[$url])){
             $this->router[$url] = [
                 "method" => "POST",
@@ -46,7 +55,7 @@ class Router{
         $router_type = ($router_type == null) ? ((isset($_SERVER["PATH_INFO"]) ? $_SERVER["PATH_INFO"] : "/")) : $router_type;
 
         if(isset($this->router[$router_type])){
-            if($_SERVER["REQUEST_METHOD"] == $this->router[$router_type]["method"]){
+            if($_SERVER["REQUEST_METHOD"] == $this->router[$router_type]["method"] || $this->router[$router_type]["method"] == "ANY"){
                 if(is_callable($this->router[$router_type]["target"])){
                     call_user_func($this->router[$router_type]["target"]);
                 }else{
