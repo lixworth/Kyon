@@ -49,6 +49,18 @@ class Router{
             if($_SERVER["REQUEST_METHOD"] == $this->router[$router_type]["method"]){
                 if(is_callable($this->router[$router_type]["target"])){
                     call_user_func($this->router[$router_type]["target"]);
+                }else{
+                    $router = explode('@',$this->router[$router_type]["target"]);
+
+                    if(!class_exists($router[0])){
+                        throw new \Exception("Error class:{$router[0]} not found");
+                    }
+                    $class = new $router[0];
+                    $action = $router[1];
+                    if(!method_exists($class,$action)){
+                        throw new \Exception("Error function:{$router[0]}:{$action} not found");
+                    }
+                    $class->$action();
                 }
             }else{
                 throw new \Exception("Error 405");
