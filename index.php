@@ -1,6 +1,6 @@
 <?php
 /**
- * api.php
+ * index.php
  *
  * @project Kyon
  * @author lixworth <lixworth@outlook.com>
@@ -11,7 +11,6 @@
 use kyon\Router;
 use kyon\RunTime;
 
-//print_r($_SERVER);
 require_once "vendor/autoload.php";
 Runtime::start();
 $router = new Router();

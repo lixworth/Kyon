@@ -1,5 +1,6 @@
 {
     "name": "lixworth/kyon",
+    "type": "project",
     "description": "Simple API framwork for php",
     "license": "GPL",
     "authors": [

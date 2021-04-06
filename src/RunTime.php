@@ -20,7 +20,7 @@ class RunTime
         self::$t = microtime();
     }
 
-    public static function end()
+    public static function end(): string
     {
         $t1 = microtime();
         list($m0, $s0) = explode(" ", self::$t);

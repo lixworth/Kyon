@@ -10,7 +10,6 @@
 
 namespace app\middleware;
 
-
 use kyon\Middleware;
 
 class TestMiddleware extends Middleware

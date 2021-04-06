@@ -10,7 +10,6 @@
 
 namespace app\http;
 
-
 use app\Application;
 
 class Hello extends Application
