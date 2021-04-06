@@ -2,7 +2,7 @@
     "name": "lixworth/kyon",
     "type": "project",
     "description": "Simple API framwork for php",
-    "license": "GPL",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "lixworth",
